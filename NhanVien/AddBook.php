@@ -17,9 +17,13 @@
 </head>
 <body>
 			<?php 
+			if (!isset($_SESSION['iduser'])) {
+				# code...
+			}else{
 				$iduser = $_SESSION['iduser'];
 				$position = $_SESSION['position']; 
 			 ?>
+			
 	<br>
 	<div class="container">
 		<div>
@@ -208,5 +212,6 @@
 		</div>
 		<div class="col-sm-3"></div>
 	</div>
+	<?php } ?>
 </body>
 </html>

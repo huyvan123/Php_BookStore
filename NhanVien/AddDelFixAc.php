@@ -35,10 +35,10 @@
 		$end = stripos($em, "*")-1;
 		$idem = substr($em, 0,$end);
 		$sqlacc = "DELETE from mydb.account
-				where account.idEmployee = '$idem'";
+				where account.idEmployee = '$em'";
 		mysqli_query($conn,$sqlacc); 
 		$sqle = "DELETE from mydb.employee
-				where employee.idEmployee = 'nam'";
+				where employee.idEmployee = '$em'";
 		mysqli_query($conn,$sqle); 
 		header("location:AddDelFix.php?check2=2");
 		}

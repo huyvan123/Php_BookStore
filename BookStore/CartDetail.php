@@ -44,7 +44,7 @@
 								$query = mysqli_query($conn,$sql);
 								if($query->num_rows > 0){
 									while ($data = mysqli_fetch_row($query)) {
-										$idbook = $data[0];
+										$idbook = $data[2];
 										//get book info
 										$sqlbook = "SELECT * 
 				 							from bookstore.book,bookstore.author,bookstore.person,bookstore.company,bookstore.discount  
@@ -63,7 +63,10 @@
 		        							<td><?=$data[3] ?></td>
 		        							<td><?=$databook[32] ?></td>
 		        							<td><?=$databook[7] ?></td>
-		        							<td><a href="ViewDetail.jsp"><button class="btn btn-danger" title="view detail"><span class="glyphicon glyphicon-circle-arrow-right"> Delete</span></button></a></td>
+		        							<td>
+		        								<form method="POST" action="DelCart.php">
+		        								<button name="delete" class="btn btn-danger" value="<?=$idbook ?>" ><span class="glyphicon glyphicon-circle-arrow-right">Delete</span></button></td>
+		        								</form>
 	      								</tr>
 
 
@@ -76,6 +79,12 @@
 					    </tbody>
  				</table>
 							<b>Total Price: <?php echo $totalprice; ?> VNĐ</b>
+
+
+
+
+
+
 			
 		</div>
 		<div class="col-sm-2"></div>

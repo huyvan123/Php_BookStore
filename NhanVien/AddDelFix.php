@@ -19,7 +19,7 @@
 </head>
 <body>
 	<br><br><br><br>
-	<div class="container" style="background-color: silver;width: 600px;">
+	<div class="container" style="background-color: silver;width: 1000px;">
 	<br>
 	<div class="row">
 		<div class="col-sm-2">
@@ -89,7 +89,7 @@
 						<div class="alert alert-success"><h5 style="color: violet; text-align: center;">Successfull!</h5></div><br>
 						<?php } }?>
 							<form action="AddDelFixAc.php" method="POST">
-								<select class="form-control" name="employee">
+								<select class="form-control" name="employee" id="empl" onclick="loaddata1();">
 									
 							<?php 
 								$sql = "SELECT *
@@ -101,13 +101,49 @@
 								if ($query->num_rows >0) {
 									while ($data = mysqli_fetch_row($query)) {
 										$em = $data[0]." * ". $data[1]." - ".$data[6]." - ".$data[7]." - ".$data[9]; ?>
-										<option><?=$em ?> </option>
+										<option><?=$data[0] ?> </option>
 								<?php	}
 								}else{ ?>
 									<option></option>
 							<?php	}
 							 ?>
 								</select>
+								<br>
+
+								<div id="showemp"></div>
+								<script type="text/javascript">
+
+
+					function loaddata1()
+					{
+					 var name=document.getElementById( "empl" ).value;
+						
+					 if(name)
+					 {
+					  $.ajax({
+					  type: 'POST',
+					  url: 'EmployeeInfo.php',
+					  data: {
+					   name:name,
+					  },
+					  success: function (response) {
+					   $( '#showemp' ).html(response);
+					  }
+					  });
+					 }
+						
+					 else
+					 {
+					  $( '#showemp' ).html("Please Enter Some Words");
+					 }
+					}
+
+			</script>
+
+
+
+
+
 								<br>
 								<button style="width: 150px;" class="btn btn-primary" type="submit" name="delete">Delete</button>
 							</form>

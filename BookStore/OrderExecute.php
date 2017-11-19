@@ -25,7 +25,7 @@
 				$query = mysqli_query($conn,$sql);
 					if($query->num_rows > 0){
 						while ($data = mysqli_fetch_row($query)) {
-						$idbook = $data[0];
+						$idbook = $data[2];
 
 						//ADD statistic order book
 						$checks = "SELECT * from bookstore.statistic
@@ -63,7 +63,7 @@
 			$query = mysqli_query($conn,$sql);
 				if($query->num_rows > 0){
 					while ($data = mysqli_fetch_row($query)) {
-						$idbook = $data[0];
+						$idbook = $data[2];
 
 						//ADD statistic order book
 						$checks = "SELECT * from bookstore.statistic

@@ -1,6 +1,7 @@
 <?php require_once('ConnectDBbookstore.php'); ?>
 <?php session_start(); ?>
 <?php 
+		
 		$path = "";
 		if (isset($_POST['image'])) {
 			//$path = 'Image/'.basename($_FILES['image']['name']);

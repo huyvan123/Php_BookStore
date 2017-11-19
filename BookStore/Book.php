@@ -98,7 +98,7 @@
 		<div class="container-fluid">
 			<form class="navbar-form navbar-right" action="Book.php" method="POST">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search" name="searchbar">
+					<input type="text" onkeyup="loaddata1();" oninput="loaddata1();" class="form-control" placeholder="Search" name="searchbar" id="searchbar">
 					<div class="input-group-btn">
 						<button class="btn btn-default" type="search" name="searchbtn">
 							<i class="glyphicon glyphicon-search"></i>
@@ -107,6 +107,37 @@
 					</div>
 				</div>
 			</form>
+
+
+			<script type="text/javascript">
+					function loaddata1()
+					{
+					 var name=document.getElementById( "searchbar" ).value;
+						
+					 if(name)
+					 {
+					  $.ajax({
+					  type: 'POST',
+					  url: 'SearchBar.php',
+					  data: {
+					   name:name,
+					  },
+					  success: function (response) {
+					   $( '#center' ).html(response);
+					  }
+					  });
+					 }
+						
+					 else
+					 {
+					  $( '#anh' ).html("Please Enter Some Words");
+					 }
+					}
+			</script>
+
+
+
+
 		</div>
 		<!-- end search -->
 		<!-- Start body -->
@@ -222,7 +253,7 @@
 			</div>
 			<!-- end left body -->
 			<!-- start center body -->
-			<div class="col-sm-7">
+			<div class="col-sm-7" id="center">
 
 
 
